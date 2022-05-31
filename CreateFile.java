@@ -1,28 +1,39 @@
-//import java.lang.*;
+import java.util.*;
 import java.io.*;
-//import java.io.IOException;
-class CreateFile{
-public static void main(String args[])
+class CreateFile {
+public static void main(String[] args)
 {
-
-try{
-File fo = new File("Fi.txt");
-FileWriter fw = new FileWriter("File.txt");
+try 
+{
+File fo = new File("File");
 if(fo.createNewFile())
 {
-
-System.out.println("File is created Successfully");
-fw.write("Hello, My name is Abhishek Udiya Student of NITK");
-     fw.close();  
+System.out.println("File Created Succesfully");
 }
 else
 {
-System.out.println("File is alredy exits");
+System.out.println("File already Exits");
+}
+FileWriter fw = new FileWriter("File");
+fw.write("Hello, My name is Abhishek Udiya");
+fw.close();
+FileReader fr = new FileReader("File");
+Scanner sc =new Scanner(fr);
+while(sc.hasNextLine())
+{
+String str = sc.nextLine();
+System.out.println(str);
+}
+FileWriter pw = new FileWriter("File",false);
+pw.write("Abhishek is append");
+pw.close();
+System.out.println("File name is " + fo.getName());
+System.out.println("File name is " + fo.getAbsolutePath());
+System.out.println("Is file writteble"+ fo.canWrite());
+}
+catch(IOException e)
+{
+System.out.println("Umexpected Error");
 }
 }
-catch (IOException e) {
-System.out.println("An unexpected error is occurred.");
-}
-}
-
 }
